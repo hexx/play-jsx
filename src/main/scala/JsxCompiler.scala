@@ -23,12 +23,12 @@ object JsxCompiler {
     val process = Process(command ++ options ++ Seq(file.getName), dir)
     var out = new StringBuilder
     var err = new StringBuilder
-    val logger = ProcessLogger((s) => out.append(s + "\n"), (s) => err.append(s + "\n"))
+    val logger = ProcessLogger(s => out.append(s + "\n"), s => err.append(s + "\n"))
     val exit = process ! logger
     if (exit != 0) {
-      val regex = """(?s).*jsx:([0-9]+)\].*""".r
-      val regex(line) = err.mkString
-      throw AssetCompilationException(Some(file), err.mkString, line.toInt, 0)
+      val regex = """(?s).*jsx:([0-9]+):([0-9]+)\].*""".r
+      val regex(line, column) = err.mkString
+      throw AssetCompilationException(Some(file), err.mkString, line.toInt, column.toInt)
     }
     out.mkString
   }
