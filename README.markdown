@@ -1,4 +1,4 @@
-# Play-jsx plugin
+# Play-jsx plugin for the Play framework 2.0.x
 
 ## Prerequisites
 
