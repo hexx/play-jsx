@@ -1,8 +1,8 @@
-# Play-jsx plugin for the Play framework 2.0.x
+# Play-JSX plugin for the Play framework 2.0.x
 
 ## Prerequisites
 
-Play-jsx plugin only supports a native compiler.
+Play-JSX plugin only supports a native compiler.
 The JSX compiler needs to be installed for this plugin to work.
 Refer to the site of JSX for more information.
 
