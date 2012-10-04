@@ -1,4 +1,4 @@
-# Play-JSX plugin for the Play framework 2.0.x
+# JSX plugin for the Play framework 2.0.x
 
 ## Prerequisites
 
@@ -15,3 +15,5 @@ Add following to your projects `project/plugins.sbt`
     addSbtPlugin("com.github.hexx" % "play-jsx" % "0.0.1")
 
 After Installation, this plugin works like the built-in CoffeeScript compiler.
+
+[Documentation: AssetsCoffeeScript - Playframework](http://www.playframework.org/documentation/latest/AssetsCoffeeScript "Documentation: AssetsCoffeeScript - Playframework")
