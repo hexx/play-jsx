@@ -7,7 +7,7 @@ object PlayJsxPlugin extends Plugin {
   val jsxEntryPoints = SettingKey[PathFinder]("play-jsx-entry-points")
   val jsxOptions = SettingKey[Seq[String]]("play-jsx-options")
 
-  val JsxCompiler = PlayProject.AssetsCompiler("jsx",
+  val JsxCompiler = play.Project.AssetsCompiler("jsx",
     (_ ** "*.jsx"),
     jsxEntryPoints,
     { (name, min) => name.replace(".jsx", if (min) ".min.js" else ".js") },

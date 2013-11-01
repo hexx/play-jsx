@@ -3,7 +3,7 @@ package com.github.hexx
 import java.io.File
 import scala.sys.process._
 import scala.util.control.Exception._
-import sbt.PlayExceptions.AssetCompilationException
+import play.PlayExceptions.AssetCompilationException
 import play.api._
 import play.core.jscompile.JavascriptCompiler
 
@@ -27,8 +27,13 @@ object JsxCompiler {
     val exit = process ! logger
     if (exit != 0) {
       val regex = """(?s).*jsx:([0-9]+):([0-9]+)\].*""".r
-      val regex(line, column) = err.mkString
-      throw AssetCompilationException(Some(file), err.mkString, line.toInt, column.toInt)
+      val (line, column) = regex.findFirstMatchIn(err.mkString).map { m =>
+        (
+          Option(m.group(1)).map(_.toInt),
+          Option(m.group(2)).map(_.toInt)
+        )
+      }.getOrElse(None, None)
+      throw AssetCompilationException(Some(file), err.mkString, line, column)
     }
     out.mkString
   }
